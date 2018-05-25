@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          prefHeight="400.0" prefWidth="600.0" alignment="CENTER" style="-fx-background-color:#F58D51">
+
+    <VBox alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2">
+        <Label text="Por favor escriba los datos del libro sugerido" fx:id="lbTituloRegistrar"  style="-fx-font-size: 14pt"/>
+    </VBox>
+
+
+
+    <Label text="Nombre completo" fx:id="lbNombre" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TextField fx:id="txtNombreCompleto" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+    <Label text="Correo electrónico" fx:id="lbCorreo" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <TextField fx:id="txtCorreo" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+    <Label text="Título del libro" fx:id="lbTitulo" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <TextField fx:id="txtTitulo" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+    <Label text="URL" fx:id="lbUrl" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+    <TextField fx:id="txtUrl" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+    <Label text="Contenido(breve sinópsis sobre la temática del libro" fx:id="lbContenido" GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.columnSpan="2"/>
+    <TextArea fx:id="txtAreaContenido" prefHeight="120" prefWidth="220" GridPane.columnIndex="0" GridPane.rowIndex="6" GridPane.columnSpan="2">
+    </TextArea>
+
+
+    <Label text="Comentarios (Queremos saber tu opinión)" fx:id="lbComentarios" GridPane.columnIndex="0" GridPane.rowIndex="7" GridPane.columnSpan="2"/>
+            <TextArea fx:id="txtAreaComentarios" prefHeight="120" prefWidth="220" GridPane.columnIndex="0" GridPane.rowIndex="8" GridPane.columnSpan="2">
+            </TextArea>
+
+    <HBox spacing="10"  alignment="CENTER" GridPane.rowIndex="9" GridPane.columnIndex="0" GridPane.columnSpan="2">
+        <Button text="Enviar" fx:id="btnEnviar" contentDisplay="TOP">
+            <graphic>
+                <FontAwesomeIconView glyphName="SEND" glyphSize="18" fill="limegreen"/>
+            </graphic>
+        </Button>
+
+        <Button  text="Cancelar" fx:id="btnCancelar" contentDisplay="TOP">
+            <graphic>
+                <FontAwesomeIconView glyphName="CLOSE" glyphSize="18" fill="red"/>
+            </graphic>
+        </Button>
+
+    </HBox>
+
+</GridPane>

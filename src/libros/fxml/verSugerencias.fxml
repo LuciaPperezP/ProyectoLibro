@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            prefHeight="500.0" prefWidth="700.0" style="-fx-background-color:#F58D51" >
+
+    <VBox spacing="10" alignment="CENTER" AnchorPane.bottomAnchor="2" AnchorPane.topAnchor="2" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
+            <Label text="Listado de libros sugeridos por usuarios y visitantes" style="-fx-font-size: 16pt"></Label>
+
+        <TableView fx:id="tblSugerencias">
+            <columns>
+                <TableColumn fx:id="tblId" text="ID">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="id" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="tblNombre" text="Nombre">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="nombre" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="tblEmail" text="Email">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="email" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="tblTitulo" text="Título">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="titulo" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="tblContenido" text="Contenido">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="contenido" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="tblComentarios" text="Comentarios">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="comentarios" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="tblUrl" text="URL">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="url" />
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+        <VBox  alignment="CENTER">
+            <Button text="OK" fx:id="btnOk"></Button>
+        </VBox>
+    </VBox>
+</AnchorPane>
