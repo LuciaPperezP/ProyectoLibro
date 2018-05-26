@@ -159,24 +159,25 @@
     </left>
 
     <center>
-        <VBox style="-fx-background-color:#F68820;">
-            <HBox prefWidth="80" spacing="15" alignment="CENTER" >
+        <VBox style="-fx-background-color:F5821C;">
+            <HBox spacing="15">
+                <HBox prefWidth="430" alignment="CENTER_LEFT">
                 <Label fx:id="nombreCategoria"/>
-                <Button fx:id="btnAgregar" text="Agregar" contentDisplay="TOP" >
-                    <graphic>
-                        <FontAwesomeIconView glyphName="PLUS_CIRCLE" glyphSize="40" fill="limegreen"/>
-                    </graphic>
-                </Button>
+                </HBox>
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button fx:id="btnAgregar" text="Agregar libro" contentDisplay="TOP" style="-fx-border-color: transparent;">
+                        <graphic>
+                            <FontAwesomeIconView glyphName="PLUS_CIRCLE" glyphSize="40" fill="limegreen"/>
+                        </graphic>
+                    </Button>
 
-                <Button fx:id="btnVerSugerencias" text="Sugerencias" contentDisplay="TOP">
-                    <graphic>
-                        <FontAwesomeIconView glyphName="NEWSPAPER_ALT" glyphSize="40" fill="blue"/>
-                    </graphic>
+                    <Button fx:id="btnVerSugerencias" text="Sugerencias" contentDisplay="TOP" style="-fx-border-color: transparent;">
+                        <graphic>
+                            <FontAwesomeIconView glyphName="NEWSPAPER_ALT" glyphSize="40" fill="blue"/>
+                        </graphic>
 
-                </Button>
-
-                <HBox spacing="0" alignment="CENTER">
-                    <Button fx:id="btnBusqueda" contentDisplay="GRAPHIC_ONLY" style="-fx-background-color: transparent">
+                    </Button>
+                    <Button fx:id="btnBusqueda" contentDisplay="GRAPHIC_ONLY" style="-fx-background-color:transparent; -fx-border-color: transparent;" >
                         <graphic>
                             <FontAwesomeIconView glyphName="SEARCH" glyphSize="25" fill="gray"/>
                         </graphic>
@@ -188,8 +189,8 @@
 
             </HBox>
             <ScrollPane fx:id="scrollLibros" prefWidth="900" prefHeight="600" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
-                <GridPane fx:id="GPCatalogo" prefHeight="600.0" prefWidth="1100.0" style="-fx-background-color:#F68820;">
-                    <Label text="Seleccione una categoria para ver los libros" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <GridPane fx:id="GPCatalogo" prefHeight="600.0" prefWidth="1100.0" style="-fx-background-color:#F3ECE6;" alignment="CENTER">
+                    <Label text="Seleccione una categoria para ver los libros" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-text-fill:#524942;"/>
                 </GridPane>
 
             </ScrollPane>
