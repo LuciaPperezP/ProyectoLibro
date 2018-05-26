@@ -94,7 +94,7 @@ public class UsuarioController implements Initializable
         Parent parent;
 
 
-            InfoLibroController infoLibrofx = new InfoLibroController();
+            InformLibroController infoLibrofx = new InformLibroController();
             stage.setTitle("Info libro");
             stage.setResizable(false);
 
