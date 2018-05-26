@@ -39,10 +39,21 @@ public class InformLibroController implements Initializable {
     private URI urlDescarga;
     private URI urlCompra;
     //Aqui se le asigna el idLibro
-    int idBook=31;
-    @Override
+    int idBook;
+    //Aqui se le asigna el idLibro
+    
+    /****************************************/
+    public InformLibroController(){
 
-    public void initialize(URL location, ResourceBundle resources) {
+    }
+    public InformLibroController (int idBook){
+      this.idBook=idBook;
+    }
+    
+/*************************************************/
+
+    @Override
+      public void initialize(URL location, ResourceBundle resources) {
         InfoLib();
         btnOk.setOnAction(handler);
         btnDescargar.setOnAction(handler);
