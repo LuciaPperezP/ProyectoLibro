@@ -35,9 +35,9 @@ import java.util.ResourceBundle;
 
 public class AdministradorController implements Initializable {
     @FXML
-    MenuItem itemRegistro, itemSesion,itemPerfil;
-    @FXML
-    Button btnVerSugerencias, btnAgregar, btnCiencia, btnComics, btnComputacion, btnNovelas, btnLengua, btnGeografia, btnMusica, btnTecnologia, btnNegocios, btnCocina, btnDrama, btnSalud, btnPolitica, btnHistoria, btnMatematicas, btnMedicina, btnFotografia;
+    MenuItem itemRegistro, itemSesion;
+    @FXML   //Moviste itemSesion aqui
+    Button itemPerfil,btnVerSugerencias, btnAgregar, btnCiencia, btnComics, btnComputacion, btnNovelas, btnLengua, btnGeografia, btnMusica, btnTecnologia, btnNegocios, btnCocina, btnDrama, btnSalud, btnPolitica, btnHistoria, btnMatematicas, btnMedicina, btnFotografia;
     @FXML
     GridPane GPCatalogo;
     @FXML
@@ -333,7 +333,9 @@ public class AdministradorController implements Initializable {
 
     private VBox llenarCadaCuadro(Libros plibros)
     {
-
+        /***************Crea ImagenView********************/
+        ImageView ejemploimg=new ImageView();
+        /**************************************************/
         VBox cuadro = new VBox();
         Button ejemploimg=new Button();
         HBox hbotones = new HBox();
@@ -342,11 +344,45 @@ public class AdministradorController implements Initializable {
         Button btnInfo = new Button();
 
         cuadro.setAlignment(Pos.CENTER);
-        ejemploimg.setPrefSize(200,300); //aqui cambias el tamaño del boton donde se muestra la portada
+        /***************Asignas el tamaño de la imagen**********************************/
+        ejemploimg.setFitWidth(200);
+        ejemploimg.setFitHeight(300); //aqui cambias el tamaño del boton donde se muestra la portada
+        /************************************************/
         String obtitulo = plibros.getTitulo();
         Label lbtitulo = new Label();
         lbtitulo.setText(obtitulo);
+        /************************************************************/
+        ejemploimg.setImage(plibros.getImagen());
+        /******Obtiene el id del libro********/
+        int idbookDetalle=plibros.getIdbook();
 
+        /***********************************************************/
+   
+        //BOTON Mostrar INFROMACIÓN LIBRO
+        btnInfo.setOnMouseClicked((EventHandler< javafx.scene.input.MouseEvent>) mouseEvent -> {
+            try {
+                mostrarInfoLibro(idbookDetalle);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        //BOTON ELIMINA LIBRO
+        btnDelete.setOnMouseClicked((EventHandler< javafx.scene.input.MouseEvent>) mouseEvent -> {
+            Alert alert;
+            alert=new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Eliminar libro");
+            alert.setHeaderText("Confirmar");
+            alert.setContentText("¿Desea eliminar "+plibros.getTitulo()+" de libros?");
+            Optional<ButtonType> option = alert.showAndWait();
+            if (option.get() == ButtonType.OK) {
+                librosDAO.delete(idbookDetalle);
+                limpiarGridPane(); construirGridPane(categoria);
+            } else if (option.get() == ButtonType.CANCEL) {
+            }
+        });
+        
+        
 
         hbotones.setStyle("-fx-spacing:5; -fx-alignment:center;");
         lbtitulo.setStyle("-fx-font-size: 18pt; -fx-text-fill:#524942;");
@@ -394,7 +430,35 @@ public class AdministradorController implements Initializable {
         GPCatalogo.getChildren().clear();
        // GPCatalogo.getChildren().add(0,node);
     }
+/******************************************************************/
+    public void mostrarInfoLibro(int id) throws IOException
+    {
+        Stage stage =new Stage();
+        FXMLLoader loader;
+        Parent parent;
 
+
+        InformLibroController infoLibrofx = new InformLibroController(id);
+        stage.setTitle("Info libro");
+        stage.setResizable(false);
+
+        loader = new FXMLLoader(getClass().getResource("../fxml/inforLibro.fxml"));
+        loader.setController(infoLibrofx);
+
+        try
+        {
+            parent= loader.load();
+            parent.getStylesheets().add("/libros/css/estiloA.css");
+            Scene scene=new Scene(parent,650,600);
+            stage.setScene(scene);
+            stage.show();
+        }
+
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
 
 }
 
