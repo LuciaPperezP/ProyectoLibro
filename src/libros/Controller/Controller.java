@@ -94,29 +94,31 @@ public class Controller implements Initializable {
         }
     };
 
-    void verificarCuenta() throws IOException
+     void verificarCuenta() throws IOException
     {
         String usuario=txtUsuario.getText();
         String contraseña=txtContrasena.getText();
 
-        usuarios objetousuarios=usuariosDAO.validar3(usuario,contraseña);
-           //String nombre2=objetousuarios.getNombre_usuario();
-            if(objetousuarios.getTipo_user()=='U')
-        {
+        try {
+            usuarios objetousuarios = usuariosDAO.validar3(usuario, contraseña);
+            if (objetousuarios.getTipo_user() == 'U')
+            {
+                System.out.println(objetousuarios.getNombre_usuario() + objetousuarios.getContraseña());
+                System.out.println(usuario + contraseña);
                 System.out.println("Datos correctos,mostrar ventana usuario");
-                mostrarVentana(2,usuario,objetousuarios);
+                mostrarVentana(2, usuario, objetousuarios);
 
                 cerrarVentana();
-            }
-            else if(objetousuarios.getTipo_user()=='A')
+            } else if (objetousuarios.getTipo_user() == 'A')
             {
 
-                mostrarVentana(3,usuario,objetousuarios);
+                mostrarVentana(3, usuario, objetousuarios);
                 cerrarVentana();
             }
-
-        else
+        }
+        catch (Exception e)
         {
+
             txtContrasena.setText("");
             txtUsuario.setText("");
             lbEstado.setFont(new Font("Tahoma", 15));
@@ -124,7 +126,6 @@ public class Controller implements Initializable {
         }
 
     }
-
 
     public void mostrarVentana(int parametro,String nombre,usuarios datosUsuario) throws IOException
     {
