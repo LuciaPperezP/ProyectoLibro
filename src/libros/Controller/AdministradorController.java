@@ -1,5 +1,6 @@
 package libros.Controller;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -191,10 +192,8 @@ public class AdministradorController implements Initializable {
 
 
             } else if (event.getSource() == btnFotografia) {
-                try { limpiarGridPane(); construirGridPane(categoria); } catch(Exception e) { System.out.println(e); }
-
                 categoria = "Fotografía";
-
+                try { limpiarGridPane(); construirGridPane(categoria); } catch(Exception e) { System.out.println(e); }
             }
 
 
@@ -301,10 +300,10 @@ public class AdministradorController implements Initializable {
         int i;
         int j;
         int recorre = 0;
-        GPCatalogo.setHgap(20);
-        GPCatalogo.setVgap(25);
-        nombreCategoria.setFont(new Font("Tahoma", 25));
-        nombreCategoria.setText("Categoria  "+categoria);
+        GPCatalogo.setHgap(100);
+        GPCatalogo.setVgap(50);
+        nombreCategoria.setStyle("-fx-font-size: 25pt; -fx-text-fill:#1E1C1A;");
+        nombreCategoria.setText("Categoría:  "+categoria);
 
 
 
@@ -334,10 +333,6 @@ public class AdministradorController implements Initializable {
 
     private VBox llenarCadaCuadro(Libros plibros)
     {
-       // Image image = new Image();
-
-        //ImageView iv1 = new ImageView();
-        //iv1.setImage(image);
 
         VBox cuadro = new VBox();
         Button ejemploimg=new Button();
@@ -346,53 +341,50 @@ public class AdministradorController implements Initializable {
         Button btnDelete=new Button();
         Button btnInfo = new Button();
 
-
-        cuadro.setSpacing(4);
-        cuadro.setPrefSize(100,80);
         cuadro.setAlignment(Pos.CENTER);
-
-        ejemploimg.setPrefSize(50,80);
-
+        ejemploimg.setPrefSize(200,300); //aqui cambias el tamaño del boton donde se muestra la portada
         String obtitulo = plibros.getTitulo();
         Label lbtitulo = new Label();
         lbtitulo.setText(obtitulo);
-        lbtitulo.setFont(new Font("Tahoma", 18));
-        lbtitulo.setTextFill(Color.BLACK);
 
 
-        hbotones.setAlignment(Pos.CENTER);
+        hbotones.setStyle("-fx-spacing:5; -fx-alignment:center;");
+        lbtitulo.setStyle("-fx-font-size: 18pt; -fx-text-fill:#524942;");
+        btnEdit.setStyle("-fx-background-color:#D2CDC9; -fx-border-color:transparent; -fx-width:300px; fx-height:300px;");
+        btnDelete.setStyle("-fx-background-color:#D2CDC9; -fx-border-color:transparent; -fx-width:300px; fx-height:300px;");
+        btnInfo.setStyle("-fx-background-color:#D2CDC9; -fx-border-color:transparent; -fx-width:300px; fx-height:300px;");
 
-        btnEdit.setPrefSize(10,10);
-        btnDelete.setPrefSize(20,20);
-        btnInfo.setPrefSize(20,20);
+        FontAwesomeIconView editIcon= new FontAwesomeIconView(FontAwesomeIcon.EDIT);
+        btnEdit.setGraphic(editIcon);
+        FontAwesomeIconView deleteIcon= new FontAwesomeIconView(FontAwesomeIcon.TRASH_ALT);
+        btnDelete.setGraphic(deleteIcon);
+        FontAwesomeIconView infoIcon= new FontAwesomeIconView(FontAwesomeIcon.INFO_CIRCLE);
+        btnInfo.setGraphic(infoIcon);
+
+        editIcon.setGlyphSize(20);
+        editIcon.setFill(Color.PURPLE);
+
+        deleteIcon.setGlyphSize(20);
+        deleteIcon.setFill(Color.BLACK);
+
+        infoIcon.setGlyphSize(20);
+        infoIcon.setFill(Color.BLUE);
+
+        Tooltip ttedit=new Tooltip("Editar");
+        btnEdit.setTooltip(ttedit);
+        Tooltip ttdelete=new Tooltip("Eliminar");
+        btnDelete.setTooltip(ttdelete);
+        Tooltip ttinfo=new Tooltip("Información");
+        btnInfo.setTooltip(ttinfo);
+
+
+
 
 
         hbotones.getChildren().addAll(btnEdit, btnDelete, btnInfo);
         cuadro.getChildren().addAll(ejemploimg,lbtitulo,hbotones);
 
         return cuadro;
-    }
-
-
-    private void metodoPrueba()
-    {
-        try {
-            Label salarioLabel = new Label("ejemplo");
-            int i;
-            int j;
-
-            for (i = 0; i <= 2; i++)//tamaño+1
-            {
-                for (j = 0; j < 3; j++) {
-                    j++;
-                    GPCatalogo.add(new Label("Etiqueta" + (i + 1)), j, i);
-                }
-            }
-            scrollLibros.setContent(GPCatalogo);
-        }catch (Exception e)
-        {
-            System.out.println(e);
-        }
     }
 
 
@@ -405,9 +397,6 @@ public class AdministradorController implements Initializable {
 
 
 }
-
-
-
 
 
 
