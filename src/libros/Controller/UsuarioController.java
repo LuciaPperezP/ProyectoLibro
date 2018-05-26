@@ -98,14 +98,14 @@ public class UsuarioController implements Initializable
             stage.setTitle("Info libro");
             stage.setResizable(false);
 
-        loader = new FXMLLoader(getClass().getResource("../fxml/infoLibro.fxml"));
+        loader = new FXMLLoader(getClass().getResource("../fxml/inforLibro.fxml"));
             loader.setController(infoLibrofx);
 
         try
         {
             parent= loader.load();
             parent.getStylesheets().add("/libros/css/estiloA.css");
-            Scene scene=new Scene(parent,450,600);
+            Scene scene=new Scene(parent,650,600);
             stage.setScene(scene);
             stage.show();
         }
