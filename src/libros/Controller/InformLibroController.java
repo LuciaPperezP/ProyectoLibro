@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 
 
 
-public class InfoLibroController implements Initializable {
+public class InformLibroController implements Initializable {
 
     @FXML
     ImageView Imgn;
