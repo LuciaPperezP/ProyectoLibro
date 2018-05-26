@@ -66,4 +66,23 @@ public class AutorDAO {
         }
         return p;
     }
+    /**************************************/
+      public String buscaAutorid(int idLibro) {
+        String nombre=null;
+        try {
+            String query = "Select nombre from autores AU INNER JOIN escribe ESC on AU.id_autor=ESC.id_autor " +
+                    "INNER JOIN libros Lib on Lib.idbook=ESC.id_book WHERE Lib.idbook="+idLibro+";";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            if (rs.next())
+                nombre=rs.getString("Nombre");
+            rs.close();
+            st.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            System.out.println("Error al recuperar información...");
+        }
+        return nombre;
+    }
 }
